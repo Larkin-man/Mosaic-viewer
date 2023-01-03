@@ -1,0 +1,31 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_MinorVer>5</VerInfo_MinorVer>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Keys>CompanyName=;FileDescription=Mosaic viewer;FileVersion=0.5.0.68;InternalName=;LegalCopyright=Larkin;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
+        <VerInfo_MajorVer>0</VerInfo_MajorVer>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Locale>1049</VerInfo_Locale>
+        <VerInfo_Build>68</VerInfo_Build>
+        <VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
+        <Multithreaded>true</Multithreaded>
+        <ILINK_CaseSensitive>true</ILINK_CaseSensitive>
+        <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+        <BCC_StackFrames>true</BCC_StackFrames>
+        <BCC_PCHCache>true</BCC_PCHCache>
+        <ILINK_DisplayTime>true</ILINK_DisplayTime>
+        <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+        <IncludePath>Mosaic viewer;$(CG_BOOST_ROOT)\boost\tr1\tr1;$(BDS)\include;$(BDS)\include\vcl;$(CG_BOOST_ROOT);$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>Mosaic viewer;$(BDS)\lib\obj;$(BDS)\lib\psdk;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <BCC_wpar>false</BCC_wpar>
+    </PropertyGroup>
+    <ProjectExtensions>
+        <Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+        <Borland.ProjectType>OptionSet</Borland.ProjectType>
+        <BorlandProject>
+            <CPlusPlusBuilder.Personality/>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+</Project>

@@ -22,6 +22,7 @@ const int CENX = 39;
 const int CENY = 28;
 
 //---------------------------------------------------------------------------
+
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
 {
 	MAPROWS = 108;
@@ -32,7 +33,6 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
 	Map = NULL;
 	Moz = NULL;
 	bitmap = new Graphics::TBitmap;
-	OpenImage("Data\\MapUp.bmp");
 	Out->Brush->Color = clInactiveCaptionText;
 	Red << gdFixed;
 	SavePos.x = 0;
@@ -45,6 +45,7 @@ void __fastcall TForm1::OpenBtnClick(TObject *Sender)
 	if (OpenPictureDialog1->Execute() == ID_OK)
 	{
 		OpenImage(OpenPictureDialog1->FileName);
+		OpenMap->Visible = false;
 	}
 }
 //---------------------------------------------------------------
@@ -52,7 +53,7 @@ void __fastcall TForm1::OpenBtnClick(TObject *Sender)
 void TForm1::OpenImage(const String file)
 {
 	bitmap->LoadFromFile(file);
-	Log->Lines->Add("Изображение:"+IntToStr(bitmap->Width)+"х"+IntToStr(bitmap->Height));
+	Form1->Caption = "Mosaic viewer: "+IntToStr(bitmap->Width)+"х"+IntToStr(bitmap->Height);
 	if (OpenMod->Checked)
 	{
 		MAPCOLS = nCol->Text.ToInt();
@@ -80,7 +81,7 @@ void TForm1::OpenImage(const String file)
 	RefreshMapSize();
 }
 //---------------------------------------------------------------
-//---------------------------------------------------------------
+
 void TForm1::RefreshMapSize()
 {
 	if (bitmap->Width % MAPCOLS == 0)
@@ -93,6 +94,7 @@ void TForm1::RefreshMapSize()
 		nRow->Color = clRed;
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	delete bitmap;
@@ -348,6 +350,7 @@ void TForm1::PaintRealInCell(int rx, int ry, int tox, int toy)
 		Source);  //Откуда
 }
 //------------------------------------------------------------------------
+
 void TForm1::PaintRealInRect(int rx, int ry, TRect to)
 {
 }
@@ -358,6 +361,7 @@ void TForm1::ToLog(const String text)
 	Log->Lines->Add(text);
 }
 //---------------------------------------------------------------------------
+
 void TForm1::CreateMozaic()
 {
 	Moz = new MCELL*[MOZX];
@@ -371,11 +375,12 @@ void TForm1::CreateMozaic()
 		}
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TForm1::SaveClick(TObject *Sender)
 {
 	if (Moz == NULL)
 		return;
-	FILE *fp = fopen ("Vafendal.txt", "wt"); //
+	FILE *fp = fopen ("Replacement.txt", "wt"); //
 	if (!fp)
 		return;
 	fprintf(fp, "%d ", MOZX);
@@ -394,7 +399,7 @@ void __fastcall TForm1::SaveClick(TObject *Sender)
 
 void __fastcall TForm1::LoadClick(TObject *Sender)
 {
-	FILE *fp = fopen ("Vafendal.txt", "rt");
+	FILE *fp = fopen ("Replacement.txt", "rt");
 	if (!fp)
 		return;
    if (Moz == NULL)
@@ -501,7 +506,6 @@ void __fastcall TForm1::Label1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm1::SetPosClick(TObject *Sender)
 {
 	SavePos.x = Out->LeftCol;
@@ -516,4 +520,10 @@ void __fastcall TForm1::GetPosClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::OpenMapClick(TObject *Sender)
+{
+	OpenImage("Map.bmp");
+	OpenMap->Visible = false;
+}
+//---------------------------------------------------------------------------
 

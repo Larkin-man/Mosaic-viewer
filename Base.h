@@ -42,6 +42,7 @@ __published:	// IDE-managed Components
 	TCheckBox *Grid;
 	TButton *SetPos;
 	TButton *GetPos;
+	TButton *OpenMap;
    void __fastcall OpenBtnClick(TObject *Sender);
    void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall PaintMapClick(TObject *Sender);
@@ -62,9 +63,7 @@ __published:	// IDE-managed Components
 	void __fastcall Label1Click(TObject *Sender);
 	void __fastcall SetPosClick(TObject *Sender);
 	void __fastcall GetPosClick(TObject *Sender);
-
-
-
+	void __fastcall OpenMapClick(TObject *Sender);
 
 
 private:	// User declarations
@@ -78,7 +77,6 @@ public:		// User declarations
 	int MAPROWS;
 	int MAPCOLS;
 	int nMon;
-	//#include "LoadingPack.h"
 	void OpenImage(const String file);
 	void RefreshMapSize();
 	void PaintRealInCell(int rx, int ry, int tox, int toy);
